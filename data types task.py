@@ -1,27 +1,29 @@
-word_one = list(input())
-word_two = list(input())
-check_list = [['', 0]]
-count = 0
-count_one = [['', 0]]
+word_one = input()
+word_two = input()
 
-for k in range(len(word_one)):
-    for h in range(len(count_one)):
-        if count_one[h] == word_one[k]:
-            
-
-for i in range(len(word_two)):
-    for k in range(len(word_one)):
-        if word_two[i] == word_one[k]:
-            count = 0
-            for l in range(check_list):
-                if check_list[l][0] == word_one[k]:
-                    count += 1
-            check_list.append([word_two[i], count])
+def get_frequecies(word):
+    freq = []
+    for i in range(len(word)):
+        count = 0; letter = ''
+        for f in range(len(freq)):
+            if word[i] == freq[f][0]:
+                count += 1; letter = f
+        if count == 0:
+            freq.append([word[i], 1])
         else:
-            pass
-    
+            freq[letter][1] += 1
+    return(freq)
 
-if len(check_list)-1 == len(word_one):
-    print('yes', check_list, word_one)        
+freq_one = get_frequecies(word_one)
+freq_two = get_frequecies(word_two)
+count = 0
+
+for k in range(len(freq_one)):
+    for l in range(len(freq_two)):
+        if (freq_one[k][0] == freq_two[l][0]) and (freq_one[k][1] <= freq_two[l][1]):
+            count += 1
+
+if count == len(freq_one):
+    print('yes')
 else:
-    print('no', check_list, word_one)
+    print('no')

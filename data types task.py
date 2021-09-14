@@ -1,5 +1,5 @@
-word_one = input()
-word_two = input()
+word_one = input('word one: ')
+word_two = input('word two: ')
 
 def get_frequecies(word):
     freq = []
@@ -24,6 +24,6 @@ for k in range(len(freq_one)):
             count += 1
 
 if count == len(freq_one):
-    print('yes')
+    print('yes,', word_one, 'can be made from the letters in', word_two)
 else:
-    print('no')
+    print('no,', word_one, 'cannot be made from the letters in', word_two)
